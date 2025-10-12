@@ -1,13 +1,14 @@
-package one.digitalinnovation.beerstock.mapper;
+package com.dio.beerstock.mapper;
 
-import one.digitalinnovation.beerstock.dto.BeerDTO;
-import one.digitalinnovation.beerstock.entity.Beer;
+import com.dio.beerstock.dto.BeerDTO;
+import com.dio.beerstock.entity.Beer;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring") // Use "spring" para injeção de dependência
 public interface BeerMapper {
 
+    // Instância estática para uso em classes que não são beans gerenciados (como o Teste Unitário)
     BeerMapper INSTANCE = Mappers.getMapper(BeerMapper.class);
 
     Beer toModel(BeerDTO beerDTO);
